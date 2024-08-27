@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package gym;
+
+message SubscriptionPersonal {
+  string id = 1;
+  string gym_id = 2;
+  string type = 3;
+  string description = 4;
+  int32 price = 5;
+  int32 duration = 6;
+  int32 count = 7;
+  string created_at = 8;
+  string updated_at = 9;
+  int64 deleted_at = 10;
+}
+
+message SubscriptionGroup {
+  string id = 1;
+  string gym_id = 2;
+  string coach_id = 3;
+  string type = 4;
+  string description = 5;
+  int32 price = 6;
+  int32 capacity = 7;
+  string time = 8;
+  int32 duration = 9;
+  int32 count = 10;
+  string created_at = 11;
+  string updated_at = 12;
+  int64 deleted_at = 13;
+}
+
+message SubscriptionCoach {
+  string id = 1;
+  string gym_id = 2;
+  string coach_id = 3;
+  string type = 4;
+  string description = 5;
+  int32 price = 6;
+  int32 duration = 7;
+  string created_at = 8;
+  string updated_at = 9;
+  int64 deleted_at = 10;
+}
+
+message CreateSubscriptionPersonalRequest {
+  SubscriptionPersonal subscription_personal = 1;
+}
+
+message GetSubscriptionPersonalRequest {
+  string id = 1;
+}
+
+message UpdateSubscriptionPersonalRequest {
+  SubscriptionPersonal subscription_personal = 1;
+}
+
+message DeleteSubscriptionPersonalRequest {
+  string id = 1;
+}
+
+message ListSubscriptionPersonalRequest {
+  string gym_id = 1;
+}
+
+message ListSubscriptionPersonalResponse {
+  repeated SubscriptionPersonal subscription_personal = 1;
+}
+
+message CreateSubscriptionGroupRequest {
+  SubscriptionGroup subscription_group = 1;
+}
+
+message GetSubscriptionGroupRequest {
+  string id = 1;
+}
+
+message UpdateSubscriptionGroupRequest {
+  SubscriptionGroup subscription_group = 1;
+}
+
+message DeleteSubscriptionGroupRequest {
+  string id = 1;
+}
+
+message ListSubscriptionGroupRequest {
+  string gym_id = 1;
+}
+
+message ListSubscriptionGroupResponse {
+  repeated SubscriptionGroup subscription_group = 1;
+}
+
+message CreateSubscriptionCoachRequest {
+  SubscriptionCoach subscription_coach = 1;
+}
+
+message GetSubscriptionCoachRequest {
+  string id = 1;
+}
+
+message UpdateSubscriptionCoachRequest {
+  SubscriptionCoach subscription_coach = 1;
+}
+
+message DeleteSubscriptionCoachRequest {
+  string id = 1;
+}
+
+message ListSubscriptionCoachRequest {
+  string gym_id = 1;
+}
+
+message ListSubscriptionCoachResponse {
+  repeated SubscriptionCoach subscription_coach = 1;
+}
+
+service SubscriptionPersonalService {
+  rpc CreateSubscriptionPersonal(CreateSubscriptionPersonalRequest) returns (SubscriptionPersonal);
+  rpc GetSubscriptionPersonal(GetSubscriptionPersonalRequest) returns (SubscriptionPersonal);
+  rpc UpdateSubscriptionPersonal(UpdateSubscriptionPersonalRequest) returns (SubscriptionPersonal);
+  rpc DeleteSubscriptionPersonal(DeleteSubscriptionPersonalRequest) returns (google.protobuf.Empty);
+  rpc ListSubscriptionPersonal(ListSubscriptionPersonalRequest) returns (ListSubscriptionPersonalResponse);
+}
+
+service SubscriptionGroupService {
+  rpc CreateSubscriptionGroup(CreateSubscriptionGroupRequest) returns (SubscriptionGroup);
+  rpc GetSubscriptionGroup(GetSubscriptionGroupRequest) returns (SubscriptionGroup);
+  rpc UpdateSubscriptionGroup(UpdateSubscriptionGroupRequest) returns (SubscriptionGroup);
+  rpc DeleteSubscriptionGroup(DeleteSubscriptionGroupRequest) returns (google.protobuf.Empty);
+  rpc ListSubscriptionGroup(ListSubscriptionGroupRequest) returns (ListSubscriptionGroupResponse);
+}
+
+service SubscriptionCoachService {
+  rpc CreateSubscriptionCoach(CreateSubscriptionCoachRequest) returns (SubscriptionCoach);
+  rpc GetSubscriptionCoach(GetSubscriptionCoachRequest) returns (SubscriptionCoach);
+  rpc UpdateSubscriptionCoach(UpdateSubscriptionCoachRequest) returns (SubscriptionCoach);
+  rpc DeleteSubscriptionCoach(DeleteSubscriptionCoachRequest) returns (google.protobuf.Empty);
+  rpc ListSubscriptionCoach(ListSubscriptionCoachRequest) returns (ListSubscriptionCoachResponse);
+}
