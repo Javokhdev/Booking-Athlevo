@@ -23,7 +23,7 @@ BEGIN
   IF NEW.payment >= (SELECT price FROM subscription_personal WHERE id = NEW.subscription_id) AND 
      booking_start_date >= NOW() AND 
      (booking_start_date + (subscription_duration * INTERVAL '1 day') > NOW()) AND
-     (NEW.count = -1 OR access_count <= subscription_count) THEN
+     (NEW.count = -1 OR access_count < subscription_count) THEN
     -- Update access_status to 'granted'
     NEW.access_status := 'granted';
   ELSE
@@ -65,7 +65,7 @@ BEGIN
   IF NEW.payment >= (SELECT price FROM subscription_group WHERE id = NEW.subscription_id) AND 
      booking_start_date >= NOW() AND 
      (booking_start_date + (subscription_duration * INTERVAL '1 day') > NOW()) AND
-     (NEW.count = -1 OR access_count <= subscription_count) THEN
+     (NEW.count = -1 OR access_count < subscription_count) THEN
     -- Update access_status to 'granted'
     NEW.access_status := 'granted';
   ELSE

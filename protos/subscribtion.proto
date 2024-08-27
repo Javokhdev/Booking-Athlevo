@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package gym;
 
+option go_package = "genproto/booking";
+
+import "protos/booking.proto";
+
 message SubscriptionPersonal {
   string id = 1;
   string gym_id = 2;
@@ -120,7 +124,7 @@ service SubscriptionPersonalService {
   rpc CreateSubscriptionPersonal(CreateSubscriptionPersonalRequest) returns (SubscriptionPersonal);
   rpc GetSubscriptionPersonal(GetSubscriptionPersonalRequest) returns (SubscriptionPersonal);
   rpc UpdateSubscriptionPersonal(UpdateSubscriptionPersonalRequest) returns (SubscriptionPersonal);
-  rpc DeleteSubscriptionPersonal(DeleteSubscriptionPersonalRequest) returns (google.protobuf.Empty);
+  rpc DeleteSubscriptionPersonal(DeleteSubscriptionPersonalRequest) returns (Empty);
   rpc ListSubscriptionPersonal(ListSubscriptionPersonalRequest) returns (ListSubscriptionPersonalResponse);
 }
 
@@ -128,7 +132,7 @@ service SubscriptionGroupService {
   rpc CreateSubscriptionGroup(CreateSubscriptionGroupRequest) returns (SubscriptionGroup);
   rpc GetSubscriptionGroup(GetSubscriptionGroupRequest) returns (SubscriptionGroup);
   rpc UpdateSubscriptionGroup(UpdateSubscriptionGroupRequest) returns (SubscriptionGroup);
-  rpc DeleteSubscriptionGroup(DeleteSubscriptionGroupRequest) returns (google.protobuf.Empty);
+  rpc DeleteSubscriptionGroup(DeleteSubscriptionGroupRequest) returns (Empty);
   rpc ListSubscriptionGroup(ListSubscriptionGroupRequest) returns (ListSubscriptionGroupResponse);
 }
 
@@ -136,6 +140,6 @@ service SubscriptionCoachService {
   rpc CreateSubscriptionCoach(CreateSubscriptionCoachRequest) returns (SubscriptionCoach);
   rpc GetSubscriptionCoach(GetSubscriptionCoachRequest) returns (SubscriptionCoach);
   rpc UpdateSubscriptionCoach(UpdateSubscriptionCoachRequest) returns (SubscriptionCoach);
-  rpc DeleteSubscriptionCoach(DeleteSubscriptionCoachRequest) returns (google.protobuf.Empty);
+  rpc DeleteSubscriptionCoach(DeleteSubscriptionCoachRequest) returns (Empty);
   rpc ListSubscriptionCoach(ListSubscriptionCoachRequest) returns (ListSubscriptionCoachResponse);
 }

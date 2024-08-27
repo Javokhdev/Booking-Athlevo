@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package gym;
+
+option go_package = "genproto/booking";
+
+message AccessPersonal {
+  string booking_personal_id = 1;
+  string date = 2;
+}
+
+message CreateAccessPersonalRequest {
+  AccessPersonal access_personal = 1;
+}
+
+message ListAccessPersonalRequest {
+  string booking_personal_id = 1;
+}
+
+message ListAccessPersonalResponse {
+  repeated AccessPersonal access_personal = 1;
+}
+
+message AccessGroup {
+  string booking_group_id = 1;
+  string date = 2;
+}
+
+message CreateAccessGroupRequest {
+  AccessGroup access_group = 1;
+}
+
+message ListAccessGroupRequest {
+  string booking_group_id = 1;
+}
+
+message ListAccessGroupResponse {
+  repeated AccessGroup access_group = 1;
+}
+
+message AccessCoach {
+  string booking_coach_id = 1;
+  string date = 2;
+}
+
+message CreateAccessCoachRequest {
+  AccessCoach access_coach = 1;
+}
+
+message ListAccessCoachRequest {
+  string booking_coach_id = 1;
+}
+
+message ListAccessCoachResponse {
+  repeated AccessCoach access_coach = 1;
+}
+
+service AccessService {
+  rpc CreateAccessPersonal(CreateAccessPersonalRequest) returns (AccessPersonal);
+  rpc ListAccessPersonal(ListAccessPersonalRequest) returns (ListAccessPersonalResponse);
+  rpc CreateAccessGroup(CreateAccessGroupRequest) returns (AccessGroup);
+  rpc ListAccessGroup(ListAccessGroupRequest) returns (ListAccessGroupResponse);
+  rpc CreateAccessCoach(CreateAccessCoachRequest) returns (AccessCoach);
+  rpc ListAccessCoach(ListAccessCoachRequest) returns (ListAccessCoachResponse);
+}

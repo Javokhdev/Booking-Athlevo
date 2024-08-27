@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package gym;
 
+option go_package = "genproto/booking";
+
 message BookingPersonal {
   string id = 1;
   string user_id = 2;
@@ -107,17 +109,20 @@ message DeleteBookingCoachRequest {
 
 message ListBookingCoachRequest {
   string user_id = 1;
+  string subscription_id = 2;
 }
 
 message ListBookingCoachResponse {
   repeated BookingCoach booking_coach = 1;
 }
 
+message Empty {}
+
 service BookingPersonalService {
   rpc CreateBookingPersonal (CreateBookingPersonalRequest) returns (BookingPersonal);
   rpc GetBookingPersonal (GetBookingPersonalRequest) returns (BookingPersonal);
   rpc UpdateBookingPersonal (UpdateBookingPersonalRequest) returns (BookingPersonal);
-  rpc DeleteBookingPersonal (DeleteBookingPersonalRequest) returns (google.protobuf.Empty);
+  rpc DeleteBookingPersonal (DeleteBookingPersonalRequest) returns (Empty);
   rpc ListBookingPersonal (ListBookingPersonalRequest) returns (ListBookingPersonalResponse);
 }
 
@@ -125,7 +130,7 @@ service BookingGroupService {
   rpc CreateBookingGroup (CreateBookingGroupRequest) returns (BookingGroup);
   rpc GetBookingGroup (GetBookingGroupRequest) returns (BookingGroup);
   rpc UpdateBookingGroup (UpdateBookingGroupRequest) returns (BookingGroup);
-  rpc DeleteBookingGroup (DeleteBookingGroupRequest) returns (google.protobuf.Empty);
+  rpc DeleteBookingGroup (DeleteBookingGroupRequest) returns (Empty);
   rpc ListBookingGroup (ListBookingGroupRequest) returns (ListBookingGroupResponse);
 }
 
@@ -133,6 +138,6 @@ service BookingCoachService {
   rpc CreateBookingCoach (CreateBookingCoachRequest) returns (BookingCoach);
   rpc GetBookingCoach (GetBookingCoachRequest) returns (BookingCoach);
   rpc UpdateBookingCoach (UpdateBookingCoachRequest) returns (BookingCoach);
-  rpc DeleteBookingCoach (DeleteBookingCoachRequest) returns (google.protobuf.Empty);
+  rpc DeleteBookingCoach (DeleteBookingCoachRequest) returns (Empty);
   rpc ListBookingCoach (ListBookingCoachRequest) returns (ListBookingCoachResponse);
 }
