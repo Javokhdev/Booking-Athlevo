@@ -66,7 +66,7 @@ func Load() Config {
 	config.PostgresPort = cast.ToInt(coalesce("POSTGRES_PORT", 5432))
 	config.PostgresUser = cast.ToString(coalesce("POSTGRES_USER", "postgres"))
 	config.PostgresPassword = cast.ToString(coalesce("POSTGRES_PASSWORD", "root"))
-	config.PostgresDB = cast.ToString(coalesce("POSTGRES_DB", "memory"))
+	config.PostgresDB = cast.ToString(coalesce("POSTGRES_DB", "booking"))
 
 	// PostgreSQL Configuration (Testing)
 	config.PostgresHostTest = cast.ToString(coalesce("POSTGRES_HOST_TEST", "localhost"))
