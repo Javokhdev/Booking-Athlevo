@@ -41,7 +41,7 @@ func main() {
 
 	// Register access service
 	booking.RegisterAccessServiceServer(s, service.NewAccessService(storage))
-
+	booking.RegisterAccessServiceBetaServer(s, service.NewAccessServiceBeta(storage))
 	fmt.Println("gRPC server listening on", cfg.GRPCPort)
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)

@@ -4,10 +4,10 @@ proto-gen:
 	./scripts/gen-proto.sh ${CURRENT_DIR}
 
 exp:
-	export DBURL='postgres://postgres:root@localhost:5432/public?sslmode=disable'
+	export DBURL='postgres://sayyidmuhammad:root@localhost:5432/postgres?sslmode=disable'
 
 mig-up:
-	migrate -path migrations -database 'postgres://postgres:1111@localhost:5432/public?sslmode=disable' -verbose up
+	migrate -path migrations -database 'postgres://sayyidmuhammad:root@localhost:5432/postgres?sslmode=disable' -verbose up
 
 mig-down:
 	migrate -path migrations -database ${DBURL} -verbose down

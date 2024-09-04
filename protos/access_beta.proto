@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gym;
+
+option go_package = "genproto/booking";
+
+message AccessBetaPersonalRequest {
+  string user_id = 1;
+  string sport_hall_id = 2;
+}
+
+message AccessBetaPersonalResponse {
+  string message = 1; // "granted" or "denied"
+}
+
+service AccessServiceBeta {
+  rpc CheckUserAccess(AccessBetaPersonalRequest) returns (AccessBetaPersonalResponse);
+}

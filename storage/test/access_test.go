@@ -12,8 +12,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// ... other test functions ...
-
 func TestAccessRepo(t *testing.T) {
 	db := createDBConnection(t)
 	defer db.Close(context.Background())

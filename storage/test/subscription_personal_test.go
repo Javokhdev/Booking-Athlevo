@@ -36,7 +36,7 @@ func createGym(t *testing.T, db *pgx.Conn) string {
 			id,
 			name,
 			location,
-			longitude,
+			longtitude,
 			latitude,
 			type_sport,
 			type_gender,
@@ -51,8 +51,9 @@ func createGym(t *testing.T, db *pgx.Conn) string {
 		"0.0",
 		"0.0",
 		"General Fitness",
-		"Mixed",
+		"male",
 	)
+
 	if err != nil {
 		t.Fatalf("Failed to create gym: %v", err)
 	}

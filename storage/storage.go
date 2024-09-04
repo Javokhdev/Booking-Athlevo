@@ -17,6 +17,8 @@ type StorageI interface {
 	SubscriptionCoach() SubscriptionCoachRepoI
 
 	Access() AccessRepoI
+
+	AccessBeta() AccessRepoBetaI
 }
 
 // BookingPersonalRepoI defines methods for interacting with personal bookings.
@@ -83,4 +85,8 @@ type AccessRepoI interface {
 
 	CreateAccessCoach(ctx context.Context, req *booking.CreateAccessCoachRequest) (*booking.AccessCoach, error)
 	ListAccessCoach(ctx context.Context, req *booking.ListAccessCoachRequest) (*booking.ListAccessCoachResponse, error)
+}
+
+type AccessRepoBetaI interface {
+	CheckUserAccess(ctx context.Context, req *booking.AccessBetaPersonalRequest) (*booking.AccessBetaPersonalResponse, error)
 }

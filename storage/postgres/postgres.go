@@ -20,6 +20,7 @@ type StorageP struct {
 	subscriptionGroupRepo    storage.SubscriptionGroupRepoI
 	subscriptionCoachRepo    storage.SubscriptionCoachRepoI
 	accessRepo               storage.AccessRepoI
+	accessBetaRepo           storage.AccessRepoBetaI
 }
 
 // NewPostgresStorage creates a new PostgreSQL storage instance.
@@ -52,6 +53,7 @@ func NewPostgresStorage(cfg config.Config) (storage.StorageI, error) {
 		subscriptionGroupRepo:    NewSubscriptionGroupRepo(db),
 		subscriptionCoachRepo:    NewSubscriptionCoachRepo(db),
 		accessRepo:               NewAccessRepo(db),
+		accessBetaRepo:           NewAccessBetaRepo(db),
 	}, nil
 }
 
@@ -88,4 +90,9 @@ func (s *StorageP) SubscriptionCoach() storage.SubscriptionCoachRepoI {
 // Access returns the AccessRepoI implementation for PostgreSQL.
 func (s *StorageP) Access() storage.AccessRepoI {
 	return s.accessRepo
+}
+
+// Access returns the AccessRepoI implementation for PostgreSQL.
+func (s *StorageP) AccessBeta() storage.AccessRepoBetaI {
+	return s.accessBetaRepo
 }
