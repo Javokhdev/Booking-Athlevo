@@ -14,15 +14,7 @@ services:
       POSTGRES_DB: "booking"
     networks:
       - global-network
-  migrate:
-    image: migrate/migrate
-    networks:
-      - global-network
-    volumes:
-      - ./migrations:/migrations
-    command: [ "-path", "/migrations", "-database",  
-                "postgres://postgres:root@postgres_dock:5432/booking?sslmode=disable", 
-                "up" ]
+  
 networks:
   global-network:
     external: true 
