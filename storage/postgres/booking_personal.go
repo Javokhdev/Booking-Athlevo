@@ -229,7 +229,7 @@ func (r *BookingPersonalRepo) ListBookingPersonal(ctx context.Context, req *book
 
 	rows, err := r.db.Query(ctx, query, args...)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to execute query: %w", err)
 	}
 	defer rows.Close()
 
@@ -256,7 +256,7 @@ func (r *BookingPersonalRepo) ListBookingPersonal(ctx context.Context, req *book
 		)
 
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("failed to scan row: %w", err)
 		}
 
 		booking.StartDate = startDate.Format(time.RFC3339)
@@ -264,6 +264,10 @@ func (r *BookingPersonalRepo) ListBookingPersonal(ctx context.Context, req *book
 		booking.UpdatedAt = updatedAt.Format(time.RFC3339)
 
 		bookings = append(bookings, &booking)
+	}
+
+	if err = rows.Err(); err != nil {
+		return nil, fmt.Errorf("row iteration error: %w", err)
 	}
 
 	return &booking.ListBookingPersonalResponse{BookingPersonal: bookings}, nil
